@@ -65,9 +65,12 @@ function TodoApp() {
 
   // Get ID checkbox and update List
   const handleCheckbox = (id) => {
-    const newList = list.map((item) =>
-      item.id === id ? (item.completed = !item.completed) : ""
-    );
+    const newList = list.map((item) => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
     setList(newList);
   };
 
