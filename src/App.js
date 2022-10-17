@@ -1,10 +1,11 @@
 import "./App.css";
 import LessonOne from "./LessonOne";
 import LessonTwo from "./LessonTwo";
+import GameShow from "./GameShow";
 import { useState } from "react";
 
 function App() {
-  const lessons = ["useState", "useEffect", "useRef"];
+  const lessons = ["useState", "useEffect", "useRef","GameShow"] ;
   const [tab, setTab] = useState("useState");
 
   return (
@@ -22,6 +23,7 @@ function App() {
       ))}
       {tab === "useState" ? <LessonOne /> : ""}
       {tab === "useEffect" ? <LessonTwo /> : ""}
+      {tab === "GameShow" ? <GameShow /> : ""}
     </div>
   );
 }
