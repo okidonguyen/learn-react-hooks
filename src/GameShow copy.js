@@ -48,23 +48,6 @@ const GameShow = () => {
     }
   };
 
-  const [randomNumber, setRandomNumber] = useState(0)  
-
-  const handleRandomClick = () =>{
-
-    const dataLength = data.filter(item => item.status === 1);
-    
-    let num = 5;
-    const timer = setInterval(() => {     
-      num = num - 1;       
-      const ranNum = Math.floor(Math.random() * dataLength.length);
-      
-      if(num === 0){
-        clearInterval(timer)
-      }
-    }, 1000);
-  }
-
   const handleLuckyChoose = (id, type) => {
     const newList = listQuestion.map((ques) => {
       if (ques.id === id && type === "lucky") {
@@ -136,7 +119,6 @@ const GameShow = () => {
                 fontSize: "23pt",
                 fontWeight: "700",
               }}
-              onClick={()=>{handleRandomClick()}}
             >
               Bấm để chọn số
             </button>
@@ -204,7 +186,7 @@ const ListQuestion = (props) => {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseout}
           onClick={() => {
-            // props.handleChoose(question.id, question.status);
+            props.handleChoose(question.id, question.status);
           }}
           style={
             question.status === 1
