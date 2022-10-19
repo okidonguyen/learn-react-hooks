@@ -5,7 +5,7 @@ import GameShow from "./GameShow";
 import { useState } from "react";
 
 function App() {
-  const lessons = ["useState", "useEffect", "useRef","GameShow"] ;
+  const lessons = ["useState", "useEffect", "useRef", "GameShow"];
   const [tab, setTab] = useState("useState");
 
   return (
@@ -28,4 +28,27 @@ function App() {
   );
 }
 
-export default App;
+const GameShowApp = () => {
+  return (
+    <div
+      style={{
+        backgroundImage: "url(./rose.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
+      <GameShow />
+      <button
+        onClick={() => {
+          localStorage.clear();
+          window.location = "/";
+        }}
+      >
+        CLEAR
+      </button>
+    </div>
+  );
+};
+
+export default GameShowApp;

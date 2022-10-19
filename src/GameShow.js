@@ -1,40 +1,8 @@
 import { useState, useEffect } from "react";
-const GameShow = () => {
-  // Status: 1-ready 2-luckyticket 3-unlucky
-  const data = [
-    {
-      id: 1,
-      question:
-        "Cứ nhẹ nhàng, bình tĩnh và kiên nhẫn trẻ sẽ cảm thấy tin tưởng từ đó đặt nhiều câu hỏi hơn và tâm sự nhiều hơn với cha mẹ trong tương lai thay vì tìm câu trả lời từ những nguồn không đáng tin tưởng.Cha mẹ khi giao tiếp hay khi làm việc đều rất không thích người khác nói chuyện theo kiểu lên mặt giáo huấn hoặc chế nhạo mình thì trẻ con cũng vậy. Việc nói chuyện giáo huấn sẽ tạo cho con một áp lực vô hình và dần chúng sẽ sợ giao tiếp với cha mẹ và người khác. Cứ nhẹ nhàng, bình tĩnh và kiên nhẫn trẻ sẽ cảm thấy tin tưởng từ đó đặt nhiều câu hỏi hơn và tâm sự nhiều hơn với cha mẹ trong tương lai thay vì tìm câu trả lời từ những nguồn không đáng tin tưởng.",
-      status: 1,
-    },
-    {
-      id: 2,
-      question: "Question 1",
-      status: 1,
-    },
-    {
-      id: 3,
-      question: "Question 1",
-      status: 1,
-    },
-    {
-      id: 4,
-      question: "Question 1",
-      status: 1,
-    },
-    {
-      id: 5,
-      question: "Question 1",
-      status: 1,
-    },
-    {
-      id: 6,
-      question: "Question 1",
-      status: 1,
-    },
-  ];
+import { questiondata } from "./data";
 
+const GameShow = () => {
+  const data = questiondata;
   const [listQuestion, setListQuestion] = useState(() => {
     const localListQuestion = JSON.parse(localStorage.getItem("listQuestion"));
     if (localListQuestion == null) {
@@ -98,23 +66,80 @@ const GameShow = () => {
   };
 
   return (
-    <div>
-      <h1>Picking Flowers - Vietnamese Woman Day</h1>
+    <div
+      style={{
+        textAlign: "center",
+        margin: "0 auto",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "25pt",
+          fontWeight: "800",
+          textShadow: "3px 3px 3px white",
+          color: "red",
+          padding: "15px",
+        }}
+      >
+        KHO BẠC NHÀ NƯỚC
+        {<br />}
+        KHO BẠC NHÀ NƯỚC ĐẮK LẮK
+      </div>
       <div
         style={{
           fontSize: "35pt",
-          fontWeight: "500",
-          textShadow: "1px 1px red",
-          color: "pink",
+          fontWeight: "800",
+          textShadow: "3px 3px 3px white",
+          color: "green",
+          padding: "10px",
         }}
       >
-        Lucky Number: {luckList.map((num) => num + " . ")}
+        HỘI THI HÁI HOA DÂN CHỦ
       </div>
-      {chooseQuestion === null ? (
-        <ListQuestion data={listQuestion} handleChoose={handleChoose} />
-      ) : (
-        <Question data={chooseQuestion} handleLuckyChoose={handleLuckyChoose} />
-      )}
+
+      <div
+        style={{
+          width: "1200px",
+          textAlign: "center",
+          padding: "20px",
+          margin: "0 auto",
+          backgroundColor: "rgb(149 132 151 / 50%)",
+        }}
+      >
+        {chooseQuestion === null ? (
+          <div>
+            <ListQuestion data={listQuestion} handleChoose={handleChoose} />
+            <button
+              style={{
+                color: "green",
+                padding: "10px",
+                margin: "10px",
+                width: "200px",
+                height: "80px",
+                fontSize: "26pt",
+                fontWeight: "600",
+              }}
+            >
+              Chọn số
+            </button>
+            <div
+              style={{
+                fontSize: "35pt",
+                fontWeight: "500",
+                textShadow: "3px 3px 3px white",
+                color: "yellow",
+              }}
+            >
+              {/* Số dự thưởng: {luckList.map((num) => num + " . ")} */}
+            </div>
+          </div>
+        ) : (
+          <Question
+            data={chooseQuestion}
+            handleLuckyChoose={handleLuckyChoose}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -123,11 +148,11 @@ const ListQuestion = (props) => {
   // STYLE
   const backgroundDiv = {
     float: "left",
-    width: "100px",
-    height: "100px",
+    width: "80px",
+    height: "80px",
     textAlign: "center",
     backgroundSize: "contain",
-    backgroundImage: "url(./flowers.png)",
+    backgroundImage: "url(./rose_png.png)",
     backgroundRepeat: "no-repeat",
     padding: "10px",
     margin: "10px",
@@ -138,7 +163,7 @@ const ListQuestion = (props) => {
   const textDiv = {
     position: "relative",
     top: "10%",
-    fontSize: "35pt",
+    fontSize: "25pt",
     fontWeight: "500",
     textShadow: "3px 3px pink",
     color: "white",
@@ -166,7 +191,7 @@ const ListQuestion = (props) => {
           style={
             question.status === 1
               ? backgroundDiv
-              : { ...backgroundDiv, filter: "grayscale(100%)" }
+              : { ...backgroundDiv, filter: "grayscale(80%)" }
           }
           key={question.id}
         >
@@ -185,15 +210,14 @@ const Question = (props) => {
     width: "200px",
     height: "80px",
     fontSize: "16pt",
+    fontWeight: "600",
   };
 
   return (
     <div
       style={{
         position: "relative",
-        width: "100%",
         minHeight: "400px",
-        backgroundColor: "#f574bb",
         color: "white",
         margin: "0px auto",
         padding: "20px",
@@ -201,19 +225,22 @@ const Question = (props) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "auto 80%",
         backgroundPosition: "2% 80%",
+        textShadow: "3px 3px 3px black",
       }}
     >
       <h1>Câu hỏi: {props.data.id}</h1>
       <div
         style={{
-          fontSize: "18pt",
-          width: "700px",
+          fontSize: "25pt",
+          width: "850px",
           margin: "0 auto",
-          textAlign: "justify",
+          textAlign: "center",
         }}
       >
         {props.data.question}
       </div>
+      <br />
+      <br />
       <button
         onClick={() => {
           props.handleLuckyChoose(props.data.id, "lucky");
