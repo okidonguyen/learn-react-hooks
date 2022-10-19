@@ -90,7 +90,7 @@ const GameShow = () => {
           fontSize: "35pt",
           fontWeight: "800",
           textShadow: "3px 3px 3px white",
-          color: "green",
+          color: "#0766dd",
           padding: "10px",
         }}
       >
@@ -114,13 +114,13 @@ const GameShow = () => {
                 color: "green",
                 padding: "10px",
                 margin: "10px",
-                width: "200px",
-                height: "80px",
-                fontSize: "26pt",
-                fontWeight: "600",
+                width: "300px",
+                height: "70px",
+                fontSize: "23pt",
+                fontWeight: "700",
               }}
             >
-              Chọn số
+              Bấm để chọn số
             </button>
             <div
               style={{
@@ -152,7 +152,7 @@ const ListQuestion = (props) => {
     height: "80px",
     textAlign: "center",
     backgroundSize: "contain",
-    backgroundImage: "url(./rose_png.png)",
+    backgroundImage: "url(./flowers.png)",
     backgroundRepeat: "no-repeat",
     padding: "10px",
     margin: "10px",
@@ -162,7 +162,7 @@ const ListQuestion = (props) => {
 
   const textDiv = {
     position: "relative",
-    top: "10%",
+    top: "12%",
     fontSize: "25pt",
     fontWeight: "500",
     textShadow: "3px 3px pink",

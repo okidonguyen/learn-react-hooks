@@ -142,7 +142,7 @@ export const questiondata = [
   },
   {
     id: 27,
-    question: "Nữ chính trị gia nào đã đại diên Việt Nam kí hiệp định Pari ?",
+    question: "Nữ chính trị gia nào đã đại diên Việt Nam kí hiệp định Paris ?",
     status: 1,
   },
   {
