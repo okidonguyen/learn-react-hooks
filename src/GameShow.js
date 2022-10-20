@@ -48,18 +48,19 @@ const GameShow = () => {
     }
   };
 
-  const [randomNumber, setRandomNumber] = useState(0)  
+  const [randomNumber, setRandomNumber] = useState(99)
 
-  const handleRandomClick = () =>{
+  const handleRandomClick = () => {
 
+    // Random without repeat
     const dataLength = data.filter(item => item.status === 1);
-    
+
     let num = 5;
-    const timer = setInterval(() => {     
-      num = num - 1;       
+    const timer = setInterval(() => {
+      num = num - 1;
       const ranNum = Math.floor(Math.random() * dataLength.length);
-      
-      if(num === 0){
+      setRandomNumber(ranNum);
+      if (num === 0) {
         clearInterval(timer)
       }
     }, 1000);
@@ -125,7 +126,17 @@ const GameShow = () => {
       >
         {chooseQuestion === null ? (
           <div>
-            <ListQuestion data={listQuestion} handleChoose={handleChoose} />
+            <div
+              style={{
+                fontSize: "25pt",
+                fontWeight: "500",
+                textShadow: "3px 3px 3px white",
+                color: "green",
+              }}
+            >
+              Số dự thưởng: {luckList.map((num) => num + " . ")}
+            </div>
+            <ListQuestion data={listQuestion} handleChoose={handleChoose} randomNumber={randomNumber} />
             <button
               style={{
                 color: "green",
@@ -136,20 +147,10 @@ const GameShow = () => {
                 fontSize: "23pt",
                 fontWeight: "700",
               }}
-              onClick={()=>{handleRandomClick()}}
+              onClick={() => { handleRandomClick() }}
             >
               Bấm để chọn số
             </button>
-            <div
-              style={{
-                fontSize: "35pt",
-                fontWeight: "500",
-                textShadow: "3px 3px 3px white",
-                color: "yellow",
-              }}
-            >
-              {/* Số dự thưởng: {luckList.map((num) => num + " . ")} */}
-            </div>
           </div>
         ) : (
           <Question
@@ -163,6 +164,7 @@ const GameShow = () => {
 };
 
 const ListQuestion = (props) => {
+  console.log(props.randomNumber);
   // STYLE
   const backgroundDiv = {
     float: "left",
@@ -175,6 +177,7 @@ const ListQuestion = (props) => {
     padding: "10px",
     margin: "10px",
     backgroundColor: "#f574bb",
+    borderRadius: "25px"
     // backgroundColor: hover ? "#fba7d5" : "#f574bb"
   };
 
@@ -188,12 +191,12 @@ const ListQuestion = (props) => {
   };
 
   const handleMouseOver = (e) => {
-    e.currentTarget.style.backgroundColor = "yellow";
+    //e.currentTarget.style.backgroundColor = "yellow";
     e.currentTarget.style.cursor = "pointer";
   };
 
   const handleMouseout = (e) => {
-    e.currentTarget.style.backgroundColor = "#f574bb";
+    //e.currentTarget.style.backgroundColor = "#f574bb";
     e.currentTarget.style.cursor = "auto";
   };
 
@@ -204,11 +207,13 @@ const ListQuestion = (props) => {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseout}
           onClick={() => {
-            // props.handleChoose(question.id, question.status);
+            props.handleChoose(question.id, question.status);
           }}
           style={
             question.status === 1
-              ? backgroundDiv
+              ? (
+                question.id !== (props.randomNumber + 1) ? backgroundDiv : { ...backgroundDiv, backgroundColor: "yellow" }
+              )
               : { ...backgroundDiv, filter: "grayscale(80%)" }
           }
           key={question.id}
