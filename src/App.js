@@ -44,8 +44,13 @@ const GameShowApp = () => {
           localStorage.clear();
           window.location = "/";
         }}
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          right: "10px",
+        }}
       >
-        CLEAR
+        RESET
       </button>
     </div>
   );

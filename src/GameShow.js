@@ -48,23 +48,22 @@ const GameShow = () => {
     }
   };
 
-  const [randomNumber, setRandomNumber] = useState(99)
+  const [randomNumber, setRandomNumber] = useState(99);
 
   const handleRandomClick = () => {
-
     // Random without repeat
-    const dataLength = data.filter(item => item.status === 1);
+    const dataLength = data.filter((item) => item.status === 1);
 
     let num = 5;
     const timer = setInterval(() => {
       num = num - 1;
       const ranNum = Math.floor(Math.random() * dataLength.length);
-      setRandomNumber(ranNum);
+      setRandomNumber(dataLength[ranNum].id);
       if (num === 0) {
-        clearInterval(timer)
+        clearInterval(timer);
       }
     }, 1000);
-  }
+  };
 
   const handleLuckyChoose = (id, type) => {
     const newList = listQuestion.map((ques) => {
@@ -122,6 +121,7 @@ const GameShow = () => {
           padding: "20px",
           margin: "0 auto",
           backgroundColor: "rgb(149 132 151 / 50%)",
+          borderRadius: "25px",
         }}
       >
         {chooseQuestion === null ? (
@@ -136,7 +136,11 @@ const GameShow = () => {
             >
               Số dự thưởng: {luckList.map((num) => num + " . ")}
             </div>
-            <ListQuestion data={listQuestion} handleChoose={handleChoose} randomNumber={randomNumber} />
+            <ListQuestion
+              data={listQuestion}
+              handleChoose={handleChoose}
+              randomNumber={randomNumber}
+            />
             <button
               style={{
                 color: "green",
@@ -147,7 +151,9 @@ const GameShow = () => {
                 fontSize: "23pt",
                 fontWeight: "700",
               }}
-              onClick={() => { handleRandomClick() }}
+              onClick={() => {
+                handleRandomClick();
+              }}
             >
               Bấm để chọn số
             </button>
@@ -171,13 +177,14 @@ const ListQuestion = (props) => {
     width: "80px",
     height: "80px",
     textAlign: "center",
-    backgroundSize: "contain",
-    backgroundImage: "url(./flowers.png)",
+    backgroundSize: "90%",
+    backgroundPosition: "center",
+    backgroundImage: "url(./lotus-flower.png)",
     backgroundRepeat: "no-repeat",
     padding: "10px",
     margin: "10px",
-    backgroundColor: "#f574bb",
-    borderRadius: "25px"
+    backgroundColor: "rgb(54 185 179)",
+    borderRadius: "25px",
     // backgroundColor: hover ? "#fba7d5" : "#f574bb"
   };
 
@@ -211,9 +218,9 @@ const ListQuestion = (props) => {
           }}
           style={
             question.status === 1
-              ? (
-                question.id !== (props.randomNumber + 1) ? backgroundDiv : { ...backgroundDiv, backgroundColor: "yellow" }
-              )
+              ? question.id !== props.randomNumber
+                ? backgroundDiv
+                : { ...backgroundDiv, backgroundColor: "yellow" }
               : { ...backgroundDiv, filter: "grayscale(80%)" }
           }
           key={question.id}
@@ -244,10 +251,10 @@ const Question = (props) => {
         color: "white",
         margin: "0px auto",
         padding: "20px",
-        backgroundImage: "url(./flower2.png)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "auto 80%",
-        backgroundPosition: "2% 80%",
+        // backgroundImage: "url(./flower2.png)",
+        // backgroundRepeat: "no-repeat",
+        // backgroundSize: "auto 80%",
+        // backgroundPosition: "2% 80%",
         textShadow: "3px 3px 3px black",
       }}
     >

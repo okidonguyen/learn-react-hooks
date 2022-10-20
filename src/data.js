@@ -12,8 +12,7 @@ export const questiondata = [
   },
   {
     id: 3,
-    question:
-      "Nữ chiến sĩ Cộng sản đầu tiên của Việt Nam là ai ? Sinh năm nào ?",
+    question: "Nữ chiến sĩ Cộng sản đầu tiên của Việt Nam là ai ?",
     status: 1,
   },
   {
@@ -77,12 +76,13 @@ export const questiondata = [
   },
   {
     id: 15,
-    question: "Kể tên 5 bài hát về phụ nữ mà bạn biết:",
+    question: "Kể tên 5 bài hát về phụ nữ mà bạn biết?",
     status: 1,
   },
   {
     id: 16,
-    question: "Hát một bài hát về phụ nữ mà bạn biết",
+    question:
+      "Hát một bài hát về phụ nữ mà bạn biếtBạn hãy cho biết Công đoàn cơ sở có bao nhiêu đoàn viên nữ, thì được thành lập Ban nữ công quần chúng?",
     status: 1,
   },
   {
@@ -125,7 +125,8 @@ export const questiondata = [
   },
   {
     id: 24,
-    question: "Ngày 08/3 và Ngày 20/10 giống nhau như thế nào ?",
+    question:
+      "Ai là người trao bức trướng thêu dòng chữ: Phụ nữ Việt Nam Trung hậu - Đảm đang - Tài năng - Anh hùng ?",
     status: 1,
   },
   {
@@ -153,13 +154,13 @@ export const questiondata = [
   },
   {
     id: 29,
-    question: "Tóc phụ nữ ở đâu xoăn nhất?",
+    question: "Nhà tù đã giam giữ chị Võ Thị Sáu ?",
     status: 1,
   },
   {
     id: 30,
     question:
-      "Thứ gì đa số chị em phụ nữ đều có, khi bỏ chữ đầu thành loài hoa, cắt chữ cuối thành động vật, bỏ dấu thì biến thành 1 loại vũ khí.",
+      "Chữ gì đa số chị em phụ nữ đều có, khi bỏ chữ đầu thành loài hoa, cắt chữ cuối thành động vật, bỏ dấu thì biến thành 1 loại vũ khí?",
     status: 1,
   },
 ];
