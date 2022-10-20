@@ -52,9 +52,10 @@ const GameShow = () => {
 
   const handleRandomClick = () => {
     // Random without repeat
-    const dataLength = data.filter((item) => item.status === 1);
+    const dataLength = listQuestion.filter((item) => item.status === 1);
+    console.log(dataLength);
 
-    let num = 5;
+    let num = 20;
     const timer = setInterval(() => {
       num = num - 1;
       const ranNum = Math.floor(Math.random() * dataLength.length);
@@ -62,7 +63,7 @@ const GameShow = () => {
       if (num === 0) {
         clearInterval(timer);
       }
-    }, 1000);
+    }, 300);
   };
 
   const handleLuckyChoose = (id, type) => {
@@ -106,6 +107,17 @@ const GameShow = () => {
         style={{
           fontSize: "35pt",
           fontWeight: "800",
+          textShadow: "3px 3px 3px purple",
+          color: "pink",
+          padding: "10px",
+        }}
+      >
+        CHÀO MỪNG NGÀY PHỤ NỮ VIỆT NĂM 20/10
+      </div>
+      <div
+        style={{
+          fontSize: "35pt",
+          fontWeight: "800",
           textShadow: "3px 3px 3px white",
           color: "#0766dd",
           padding: "10px",
@@ -134,7 +146,8 @@ const GameShow = () => {
                 color: "green",
               }}
             >
-              Số dự thưởng: {luckList.map((num) => num + " . ")}
+              {/* Số dự thi: {luckList.map((num) => num + " . ")} */}
+              XIN MỜI HÁI HOA
             </div>
             <ListQuestion
               data={listQuestion}
@@ -155,7 +168,7 @@ const GameShow = () => {
                 handleRandomClick();
               }}
             >
-              Bấm để chọn số
+              Bấm để chọn hoa
             </button>
           </div>
         ) : (
@@ -179,7 +192,8 @@ const ListQuestion = (props) => {
     textAlign: "center",
     backgroundSize: "90%",
     backgroundPosition: "center",
-    backgroundImage: "url(./lotus-flower.png)",
+    backgroundImage: "url(./flowers.png)",
+    //backgroundImage: "url(./lotus-flower.png)",
     backgroundRepeat: "no-repeat",
     padding: "10px",
     margin: "10px",
@@ -221,7 +235,7 @@ const ListQuestion = (props) => {
               ? question.id !== props.randomNumber
                 ? backgroundDiv
                 : { ...backgroundDiv, backgroundColor: "yellow" }
-              : { ...backgroundDiv, filter: "grayscale(80%)" }
+              : { ...backgroundDiv, filter: "grayscale(50%)" }
           }
           key={question.id}
         >
@@ -237,9 +251,9 @@ const Question = (props) => {
   const buttonStyle = {
     padding: "10px",
     margin: "10px",
-    width: "200px",
+    width: "250px",
     height: "80px",
-    fontSize: "16pt",
+    fontSize: "20pt",
     fontWeight: "600",
   };
 
@@ -258,10 +272,16 @@ const Question = (props) => {
         textShadow: "3px 3px 3px black",
       }}
     >
-      <h1>Câu hỏi: {props.data.id}</h1>
+      <h1
+        style={{
+          fontSize: "30pt",
+        }}
+      >
+        Câu hỏi: {props.data.id}
+      </h1>
       <div
         style={{
-          fontSize: "25pt",
+          fontSize: "30pt",
           width: "850px",
           margin: "0 auto",
           textAlign: "center",
@@ -280,9 +300,9 @@ const Question = (props) => {
           color: "green",
         }}
       >
-        Tặng phiếu dự thưởng
+        Xin chúc mừng !
       </button>
-      <button
+      {/* <button
         onClick={() => {
           props.handleLuckyChoose(props.data.id, "unlucky");
         }}
@@ -292,7 +312,7 @@ const Question = (props) => {
         }}
       >
         Không tặng phiếu dự thưởng
-      </button>
+      </button> */}
     </div>
   );
 };
