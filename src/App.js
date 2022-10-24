@@ -1,6 +1,6 @@
 import "./App.css";
-import LessonOne from "./LessonOne";
-import LessonTwo from "./LessonTwo";
+import LessonOne from "./components/LessonOne";
+import LessonTwo from "./components/LessonTwo";
 import { useState } from "react";
 
 function App() {

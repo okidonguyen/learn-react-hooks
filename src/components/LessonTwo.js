@@ -5,12 +5,25 @@ function LessonTwo() {
     <div>
       <h1>useEffect() Hooks</h1>
       <p>This lesson lern about useEffect </p>
-      <h2>Exmaple 1: get content from API</h2>
+      <h1>Exmaple 1: get content from API</h1>
       <MenuTab />
-      <h2>Exmaple 2: Go to Top</h2>
+      <hr />
+      <h1>Exmaple 2: Go to Top</h1>
       <GotoTop />
-      <h3>Example 3: Resize window</h3>
+      <hr />
+      <h1>Example 3: Resize window</h1>
       <ResizeWindow />
+      <hr />
+      <h1>Example 4: Countdown</h1>
+      <CountdownTimer />
+      <hr />
+      <h1>Example 5: Upload IMG</h1>
+      <UploadImg />
+      <hr />
+      <h1>Example 6: Custom Window Event Emmit</h1>
+      <MyCustomEvent />
+      <hr />
+      <br />
     </div>
   );
 }
@@ -81,6 +94,7 @@ const MenuTab = () => {
   );
 };
 
+// Go to Top Button
 const GotoTop = () => {
   const [scroll, setScroll] = useState(0);
 
@@ -125,6 +139,7 @@ const GotoTop = () => {
   );
 };
 
+// Add Event Listener and clear when remove Component
 const ResizeWindow = () => {
   const [windowSize, SetWindowSize] = useState({
     width: window.innerWidth,
@@ -152,6 +167,127 @@ const ResizeWindow = () => {
     >
       {windowSize.width + " - " + windowSize.height}
     </button>
+  );
+};
+
+// Timer countdown
+const CountdownTimer = () => {
+  const [myTimer, setMyTimer] = useState(20);
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    // Declare Interval to run per second
+    const timer = setInterval(() => {
+      if (start) {
+        // use callback because inside Interval cannot change value outside
+        setMyTimer((preState) => {
+          if (preState === 0) {
+            //  stop when state = 0
+            clearInterval(timer);
+            setStart(false);
+          } else {
+            // subtract 1
+            preState = preState - 1;
+          }
+          return preState;
+        });
+      } else {
+        // pause, clear timer
+        clearInterval(timer);
+      }
+    }, 1000);
+    return () => {
+      // clear timer when unmounting
+      clearInterval(timer);
+    };
+  }, [start]);
+
+  // render
+  return (
+    <div>
+      <h3>Countdown: {myTimer}</h3>
+      <button
+        onClick={() => {
+          setStart(!start);
+        }}
+      >
+        {start ? "resume" : "start"}
+      </button>
+      <button
+        onClick={() => {
+          setMyTimer(20);
+          setStart(false);
+        }}
+      >
+        reset
+      </button>
+    </div>
+  );
+};
+
+// Upload Image Avatar
+const UploadImg = () => {
+  const [avatar, setAvatar] = useState();
+  const handleUpload = (e) => {
+    setAvatar(URL.createObjectURL(e.target.files[0]));
+    // Clear to choose one file multiple
+    e.target.value = null;
+  };
+
+  // Clear when choose other avatar
+  useEffect(() => {
+    return () => {
+      URL.revokeObjectURL(avatar);
+    };
+  }, [avatar]);
+
+  return (
+    <div>
+      <input type="file" onChange={handleUpload} />
+      {avatar && <img src={avatar} alt={avatar.name} />}
+    </div>
+  );
+};
+
+const MyCustomEvent = () => {
+  const lessons = [
+    {
+      id: 1,
+      title: "Lesson 1",
+    },
+    {
+      id: 2,
+      title: "Lesson 2",
+    },
+    {
+      id: 3,
+      title: "Lesson 3",
+    },
+  ];
+  const [active, setActive] = useState(1);
+  return (
+    <div>
+      <ul>
+        {lessons.map((les) => (
+          <li
+            key={les.id}
+            style={
+              active === les.id
+                ? {
+                    color: "orange",
+                    fontWeight: "500",
+                  }
+                : {}
+            }
+            onClick={() => {
+              setActive(les.id);
+            }}
+          >
+            {les.title}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
