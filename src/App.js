@@ -1,11 +1,10 @@
 import "./App.css";
 import LessonOne from "./LessonOne";
 import LessonTwo from "./LessonTwo";
-import GameShow from "./GameShow";
 import { useState } from "react";
 
 function App() {
-  const lessons = ["useState", "useEffect", "useRef", "GameShow"];
+  const lessons = ["useState", "useEffect", "useRef"];
   const [tab, setTab] = useState("useState");
 
   return (
@@ -23,37 +22,8 @@ function App() {
       ))}
       {tab === "useState" ? <LessonOne /> : ""}
       {tab === "useEffect" ? <LessonTwo /> : ""}
-      {tab === "GameShow" ? <GameShow /> : ""}
     </div>
   );
 }
 
-const GameShowApp = () => {
-  return (
-    <div
-      style={{
-        backgroundImage: "url(./rose.jpg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        height: "100vh",
-      }}
-    >
-      <GameShow />
-      <button
-        onClick={() => {
-          localStorage.clear();
-          window.location = "/";
-        }}
-        style={{
-          position: "fixed",
-          bottom: "10px",
-          right: "10px",
-        }}
-      >
-        RESET
-      </button>
-    </div>
-  );
-};
-
-export default GameShowApp;
+export default App;
