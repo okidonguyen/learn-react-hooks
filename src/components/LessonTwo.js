@@ -5,10 +5,10 @@ function LessonTwo() {
     <div>
       <h1>useEffect() Hooks</h1>
       <p>This lesson lern about useEffect </p>
-      <h1>Exmaple 1: get content from API</h1>
+      <h1>Example 1: get content from API</h1>
       <MenuTab />
       <hr />
-      <h1>Exmaple 2: Go to Top</h1>
+      <h1>Example 2: Go to Top</h1>
       <GotoTop />
       <hr />
       <h1>Example 3: Resize window</h1>

@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# LEARN ALL ABOUT REACT HOOK
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Lesson One - useState
 
-## Available Scripts
+### Example 1: Click to inscrease number
 
-In the project directory, you can run:
+### Example 2: Todo App
 
-### `npm start`
+### Note
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```javascript
+const [name, setName] = useState(() => {
+  // Dung callback trong truong hop can xu ly logic,
+  // tranh de he thong xu ly nhieu lan
+  return "Nguyen Trung Nguyen";
+});
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Lesson Two - useEffect
 
-### `npm test`
+### Example 1: get content from API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Example 2: Go to Top
 
-### `npm run build`
+### Example 3: Resize window
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+// Luon chay khi render
+useEffect(callback);
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+// Chay 1 lan duy nhat sau khi component mount
+useEffect(callback, []);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// Chay khi deps thay doi
+useEffect(callback, [deps]);
+```
 
-### `npm run eject`
+### Example 4: Countdown
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Example 5: Upload IMG
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Example 6: Custom Window Event Emmit
